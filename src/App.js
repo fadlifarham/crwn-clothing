@@ -27,22 +27,13 @@ class App extends React.Component {
       if (userDoc) {
         const userSnapshot = await getDoc(userDoc);
         if (userSnapshot) {
-          this.setState(
-            {
-              currentUser: {
-                id: userSnapshot.id,
-                ...userSnapshot.data()
-              }
-            },
-            () => {
-              console.log(this.state);
+          this.setState({
+            currentUser: {
+              id: userSnapshot.id,
+              ...userSnapshot.data()
             }
-          );
+          });
         }
-      } else {
-        this.setState({ currentUser: user }, () => {
-          console.log(this.state);
-        });
       }
     });
   }
